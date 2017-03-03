@@ -1,8 +1,8 @@
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 
 public class JenaTripelsExample {
@@ -10,7 +10,7 @@ public class JenaTripelsExample {
     public static void main(String[] args) throws FileNotFoundException {
         Model model = ModelFactory.createDefaultModel();
         ClassLoader classLoader = JenaTripelsExample.class.getClassLoader();
-        FileInputStream in = new FileInputStream(classLoader.getResource("dataset.ttl").getFile());
+        InputStream in = classLoader.getResourceAsStream("dataset.ttl");
         model.read(in, null, "TTL");
         query(model);
         showModelSize(model);

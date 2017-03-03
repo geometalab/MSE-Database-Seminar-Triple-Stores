@@ -48,3 +48,15 @@ Possible options are:
 
 ## Queries
 http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/ExploreUseCase/index.html
+
+
+## Example
+Build:
+```
+mvn clean compile assembly:single
+```
+
+Run:
+```
+java -jar target/TripleStoreSeminar-1.0-SNAPSHOT-jar-with-dependencies.jar 
+```
