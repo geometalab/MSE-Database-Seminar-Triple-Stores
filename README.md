@@ -3,6 +3,7 @@ Help repository for the Triple Store Benchmark of the HSR DB Seminar String 2017
 
 ## Data generation
 For the Benchmark we use the Berlin SPARQL Benchmark (BSBM). (http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/BenchmarkRules/index.html#datagenerator)
+
 This project provides a data generator for RDF data.
 
 ### How to generate data
@@ -44,3 +45,6 @@ Possible options are:
 		default: 1
 
 ```
+
+## Queries
+http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/ExploreUseCase/index.html
