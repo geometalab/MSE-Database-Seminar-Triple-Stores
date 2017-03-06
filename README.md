@@ -1,4 +1,4 @@
-# Triple Store Seminar
+# MSE Seminar Data Base Systems Spring 17 on Triple Stores
 This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Evaluating Open Source Triple Stores with Massive Data from the Example of Virtuoso Universal DB Server, Apache Jena TDB and RDFLib/PostgreSQL DB".
 
 ## Data generation
