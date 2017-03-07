@@ -1,5 +1,5 @@
-# Triple Store Seminar
-Help repository for the Triple Store Benchmark of the HSR DB Seminar String 2017.
+# MSE Seminar Data Base Systems Spring 17 on Triple Stores
+This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Evaluating Open Source Triple Stores with Massive Data from the Example of Virtuoso Universal DB Server, Apache Jena TDB and RDFLib/PostgreSQL DB".
 
 ## Data generation
 For the Benchmark we use the Berlin SPARQL Benchmark (BSBM). (http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/BenchmarkRules/index.html#datagenerator)
