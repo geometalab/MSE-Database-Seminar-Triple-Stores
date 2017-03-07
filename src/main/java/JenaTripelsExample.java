@@ -11,9 +11,10 @@ public class JenaTripelsExample {
         Model model = ModelFactory.createDefaultModel();
         ClassLoader classLoader = JenaTripelsExample.class.getClassLoader();
         InputStream in = classLoader.getResourceAsStream("dataset.ttl");
+        //InputStream in = classLoader.getResourceAsStream("scale10000.ttl");
         model.read(in, null, "TTL");
-        query(model);
         showModelSize(model);
+        query(model);
     }
 
     private static void showModelSize(Model m) {
@@ -34,13 +35,19 @@ public class JenaTripelsExample {
                 "ORDER BY ?label\n" +
                 "LIMIT 10";
 
-        Query query = QueryFactory.create(queryString);
-        try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
-            ResultSet results = qexec.execSelect();
-            for (; results.hasNext(); ) {
-                QuerySolution soln = results.nextSolution();
-                System.out.println(soln.toString());
+        try {
+            Query query = QueryFactory.create(queryString);
+
+            try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+                ResultSet results = qexec.execSelect();
+                for (; results.hasNext(); ) {
+                    QuerySolution soln = results.nextSolution();
+                    System.out.println(soln.toString());
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 }

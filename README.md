@@ -8,7 +8,7 @@ This project provides a data generator for RDF data.
 
 ### How to generate data
 Switch to the /bsbmtools-0.2 directory and run the generate script.
-
+Example (generates 3421251 triples): ./generate -fc -pc 10000 -ud -fn scale10000 -s ttl
 ```
 $ ./generate -h
 
