@@ -85,8 +85,6 @@ instance/
 # Sphinx documentation
 docs/_build/
 
-# PyBuilder
-target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -114,4 +112,3 @@ ENV/
 # Rope project settings
 .ropeproject
 
-scale10000.ttl
