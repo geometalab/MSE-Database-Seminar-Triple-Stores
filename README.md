@@ -1,6 +1,19 @@
 # MSE Seminar Data Base Systems Spring 17 on Triple Stores
 This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Evaluating Open Source Triple Stores with Massive Data from the example of Virtuoso Universal DB Server, Apache Jena TDB and RDFLib/PostgreSQL DB".
 
+
+## Postgres with rdflib as reference
+To compare your individual triple store system with postgres we prepared a setup with postgres and rdflib.
+ 
+### Setup
+  1. Install Postgres 9.6. (I recommend to use the the docker container from https://hub.docker.com/_/postgres/)
+  2. Install Python 3.6
+  3. Clone this repository ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
+  4. Switch to the bsbmtools-0.2 directory and generate the sample data ``./generate -fc -pc 10000 -ud -fn scale10000 -s ttl`` 
+  5. Move the scale10000.ttl file into the rdflib directory and edit the config.ini for the setup
+  6. To import the data into the postgres database run the store_data.py (this could take awhile) ``python3 store_data.py``
+  7. Now you could run the queries ``python3 query_data.py``
+
 ## Queries
 For the benchmark we implement the following queries:  
 http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/ExploreUseCase/index.html  
@@ -25,7 +38,7 @@ And run the command:
 The scale10000.ttl file contains now 3421251 triples and is the base for the benchmark.
 
 
-## Jena example
+### Jena example
 Build:
 ```
 mvn clean compile assembly:single

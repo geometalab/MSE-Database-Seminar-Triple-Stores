@@ -15,4 +15,6 @@ def query_action(graph, db_uri):
     [print(t) for t in times]
 
 
+print('begin query data')
 do(query_action)
+print('begin query data')

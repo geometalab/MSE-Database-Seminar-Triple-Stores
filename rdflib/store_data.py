@@ -1,9 +1,15 @@
-from graph import do
+import os
+from graph import do, read_configuration_file
 
 
 def store_action(graph, db_uri):
-    graph.open(db_uri, create=False)  # set to False when store exists
-    graph.parse('scale10000.ttl', encoding='utf-8', format='ttl')
+    graph.open(db_uri, create=True)  # set to False when store exists
+    config_parser = read_configuration_file('config.ini')
+    path = config_parser.get('DATA', 'path', fallback='scale10000.ttl')
+    if not os.path.isfile(path):
+        raise Exception("The data file {0} does not exist!".format(path))
+    graph.parse(path, encoding='utf-8', format='ttl')
+
 
 print('begin store data')
 do(store_action)
