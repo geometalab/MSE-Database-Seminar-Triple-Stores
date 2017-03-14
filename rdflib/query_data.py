@@ -8,11 +8,15 @@ def query_action(graph, db_uri):
     times = []
     for key, query in queries.items():
         start = time.time()
-        _ = graph.query(query)
+        query_result = graph.query(query)
         end = time.time()
-        times.append(dict(key=key, time=end - start))
+        times.append(dict(key=key, time=end - start, result=query_result))
 
-    [print(t) for t in times]
+    for entry in times:
+        count = 0
+        for _ in entry['result']:
+            count = count + 1
+        print("Query: {0} , Count: {1}, Time: {2}s".format(entry['key'], count, entry['time']))
 
 
 print('begin query data')
