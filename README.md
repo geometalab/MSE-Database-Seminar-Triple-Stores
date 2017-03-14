@@ -22,3 +22,10 @@ http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/Expl
 As you can see in the folder rdflib there is a queries.py file with the queries from the benchmark with filled random variables.
 (rdflib doesn't support DESCRIBE so the query number 8 is not possible)  
 Your goal is now to implement the same queries with your specific framework and compare them with the postgres rdflib setup.
+
+### Additional
+We used the data generation tool from the Berlin SPARQL Benchmark (BSBM).  
+http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/BenchmarkRules/index.html#datagenerator  
+  
+If you like to create 
+It https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ

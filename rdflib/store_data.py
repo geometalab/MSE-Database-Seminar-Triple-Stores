@@ -1,6 +1,4 @@
 import os
-import time
-from rdflib import ConjunctiveGraph
 from graph import do, read_configuration_file
 
 
@@ -10,13 +8,7 @@ def store_action(graph, db_uri):
     path = config_parser.get('DATA', 'path', fallback='scale10000.nt')
     if not os.path.isfile(path):
         raise Exception("The data file {0} does not exist!".format(path))
-    parse_graph = ConjunctiveGraph()
-    print('Start parsing')
-    start = time.time()
-    parse_graph.parse(path, format='nt')
-    end = time.time()
-    print('end parsing, time spent {0}s'.format(end-start))
-    graph.addN(parse_graph)
+    graph.parse(path, format='nt')
 
 
 print('begin store data')

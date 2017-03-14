@@ -9,10 +9,8 @@ public class JenaTripelsExample {
 
     public static void main(String[] args) throws FileNotFoundException {
         Model model = ModelFactory.createDefaultModel();
-        ClassLoader classLoader = JenaTripelsExample.class.getClassLoader();
-        InputStream in = classLoader.getResourceAsStream("dataset.ttl");
-        //InputStream in = classLoader.getResourceAsStream("scale10000.ttl");
-        model.read(in, null, "TTL");
+        InputStream in = JenaTripelsExample.class.getResourceAsStream("data.nt");
+        model.read(in, null, "NT");
         showModelSize(model);
         query(model);
     }
