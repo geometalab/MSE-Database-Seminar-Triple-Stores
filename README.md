@@ -3,7 +3,7 @@ This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Eva
 
 
 ## Postgres with rdflib as reference
-To compare your individual triple store system with postgres we prepared a setup with postgres and rdflib.
+To compare your individual triple store system with postgres we prepared a setup with Postgres and RDFLib.
  
 ### Setup
   1. Install Postgres 9.6 and create a database called "benchmark"
