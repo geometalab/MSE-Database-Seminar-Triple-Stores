@@ -2,11 +2,11 @@
 This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Evaluating Open Source Triple Stores with Massive Data from the example of Virtuoso Universal DB Server, Apache Jena TDB and RDFLib/PostgreSQL DB".
 
 
-## Postgres with rdflib as reference
-To compare your individual triple store system with postgres we prepared a setup with Postgres and RDFLib.
+## PostgreSQL with rdflib as reference
+To compare your specific triple store system with PostgreSQL we prepared a setup with Postgres and RDFLib.
  
 ### Setup
-  1. Install Postgres 9.6 and create a database called "benchmark"
+  1. Install PostgreSQL 9.6 and create a database called "benchmark"
   2. Install Python 3.6 and pip 3
   3. Clone this repository 
   ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
@@ -28,7 +28,7 @@ Link: https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ
 
 We used the data generation tool from the Berlin SPARQL Benchmark (BSBM). 
 http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/BenchmarkRules/index.html#datagenerator  
-  
+
 If you like to generate your own data for test use the generate script. 
 Switch to the bsbmtools-0.2 directory and generate the sample data. 
 Example: ``./generate -fc -pc 10000 -ud -fn scale10000 -s ttl``
@@ -41,8 +41,8 @@ As you can see in the folder rdflib there is a queries.py file with the queries 
 (rdflib doesn't support DESCRIBE so the query number 8 is not possible)  
 Your goal is now to implement the same queries with your specific framework and compare them with the postgres rdflib setup.      
 
-To run the queries on the Postgres-RDFLib setup use the query_data.py script. 
-``python3 query_data.py`` The output will look somehow as the following:
+To run the queries on the RDFLib/PostgreSQL setup use the query_data.py script. 
+``python3 query_data.py`` The output will look somehow as following:
 ```
 Query: query_1 , Count: 10, Time: 26.906s
 Query: query_2 , Count: 14, Time: 0.658s
@@ -60,5 +60,5 @@ Query: query_12 , Count: 8, Time: 0.044s
 
 
 ### Additional
-With the store_data.py script you are able to import the TripleStoreFiles (.nt) direct into postgres. (The recommended way is to us the sql dump files)
-To import the data run the store_data.py (this could take awhile) ``python3 store_data.py``
+With the store_data.py script you are able to import the Triple Store Files (.nt) direct into PostgreSQL. (The recommended way is to use the SQL dump files).
+To import the data, run the store_data.py (this could take a while): ``python3 store_data.py``
