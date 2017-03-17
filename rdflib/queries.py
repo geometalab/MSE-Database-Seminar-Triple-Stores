@@ -1,4 +1,6 @@
-queries = dict()
+from collections import OrderedDict
+
+queries = OrderedDict()
 
 queries['query_1'] = """
         PREFIX bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/>

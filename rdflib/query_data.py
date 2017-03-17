@@ -5,18 +5,14 @@ from queries import queries
 
 def query_action(graph, db_uri):
     graph.open(db_uri, create=False)
-    times = []
     for key, query in queries.items():
         start = time.time()
         query_result = graph.query(query)
+        number_of_entries = 0
+        for _ in query_result:
+            number_of_entries = number_of_entries + 1
         end = time.time()
-        times.append(dict(key=key, time=end - start, result=query_result))
-
-    for entry in times:
-        count = 0
-        for _ in entry['result']:
-            count = count + 1
-        print("Query: {0} , Count: {1}, Time: {2}s".format(entry['key'], count, entry['time']))
+        print("Query: {0} , Count: {1}, Time: {2:.3f}s".format(key, number_of_entries, end - start))
 
 
 print('begin query data')

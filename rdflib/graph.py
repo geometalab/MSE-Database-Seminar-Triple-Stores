@@ -1,7 +1,7 @@
 import configparser
 import os
-from rdflib import plugin, ConjunctiveGraph, Literal, URIRef
 
+from rdflib import plugin, ConjunctiveGraph, Literal, URIRef
 from rdflib.store import Store
 from rdflib_sqlalchemy import registerplugins
 
@@ -22,7 +22,6 @@ port = config_parser.get('POSTGRES', 'port', fallback='5432')
 database = config_parser.get('POSTGRES', 'database', fallback='benchmark')
 password = config_parser.get('POSTGRES', 'password', fallback='mysecretpassword')
 
-
 identifier = URIRef("benchmark")
 db_uri = Literal('postgresql+psycopg2://postgres:{0}@{1}:{2}/{3}'.format(password, server, port, database))
 
@@ -35,5 +34,3 @@ def do(action):
         graph.close()
     except:
         pass
-
-
