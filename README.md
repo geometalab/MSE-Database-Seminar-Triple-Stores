@@ -41,7 +41,7 @@ To compare your specific triple store system with PostgreSQL we prepared a setup
   6. Install the project requirements with pip3 
   ``pip3 install -r requirements.txt``
 
-Note: With the store_data.py script you are able to import the Triple Store Files (.nt) direct into PostgreSQL. (The recommended way is to use the SQL dump files).
+Note: With the store_data.py script you are able to import the Triple Store Files (.nt) directly into PostgreSQL using SPARQL insert commands. The recommended way for RDFLib/PostgreSQL is to use the SQL dump files using PostgreSQL tools.
 To import the data, run the store_data.py (this could take a while): ``python3 store_data.py``.
 
 ### Queries
