@@ -28,7 +28,7 @@ Example: ``./generate -fc -pc 10000 -ud -fn scale10000 -s ttl``
 
 
 ## RDFLib/PostgreSQL
-To compare your specific triple store system with PostgreSQL we prepared a setup with Postgres and RDFLib.
+To compare your specific triple store system with PostgreSQL we prepared a setup with PostgreSQL and RDFLib (and SQLAlchemy).
  
 ### Setup
   1. Install PostgreSQL 9.6 and create a database called "benchmark"
@@ -36,7 +36,7 @@ To compare your specific triple store system with PostgreSQL we prepared a setup
   3. Clone this repository 
   ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
   4. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ  
-  5. To import the data into postgres us the sql dump files 
+  5. To import the data into PostgreSQL us the sql dump files 
   ``psql -U postgres -h localhost benchmark < dump_scale1000.sql``
   6. Install the project requirements with pip3 
   ``pip3 install -r requirements.txt``
