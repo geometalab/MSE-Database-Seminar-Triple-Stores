@@ -1,11 +1,15 @@
 # MSE Seminar Data Base Systems Spring 17 on Triple Stores
 This is the repository for the MSE Seminar Data Base Systems Spring 2017 on "Evaluating Open Source Triple Stores with Massive Data from the example of Virtuoso Universal DB Server, Apache Jena TDB and RDFLib/PostgreSQL DB".
 
-## Dataset
+## The Benchmark
 
 For this seminar we use the "Berlin SPARQL Benchmark" (BSBM, v3.1 2011): http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/ with dataset Product.
 
-Queries: For the benchmark we implement the following queries: http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/ExploreUseCase/index.html  
+### Queries
+
+For the benchmark we implement the following queries: http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/ExploreUseCase/index.html  
+
+### Dataset
 
 In order to get the data we used the data generation tool: http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/BenchmarkRules/index.html#datagenerator . 
 
@@ -57,12 +61,12 @@ Query: query_5 , Count: 5, Time: 24.915s
 Query: query_6 , Count: 21467, Time: 98.267s
 Query: query_7 , Count: 5, Time: 32.379s
 Query: query_8 , Count: 3, Time: 0.120s
+(Query: query_9 -) 
 Query: query_10 , Count: 0, Time: 32.155s
 Query: query_11 , Count: 10, Time: 1.077s
 Query: query_12 , Count: 8, Time: 0.044s
 ```
 
 Notes:
- - RDFLib doesn't support DESCRIBE, so the query number 8 is not possible in RDFLib.
+ - RDFLib doesn't support DESCRIBE, so the query number 9 is not possible in RDFLib.
  - RDFLib with SQLAlchemy implemented aka lazy loading, so the query immediately returns and objects are queries after accessing or interating through the result set.
-
