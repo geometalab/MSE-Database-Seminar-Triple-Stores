@@ -24,7 +24,7 @@ Content see below. Download-Link for all files: https://drive.switch.ch/index.ph
 
 Notes: 
  - If you like to generate your own data for test use the generate script. Switch to the bsbmtools-0.2 directory and generate the sample data. Example: ``./generate -fc -pc 10000 -ud -fn scale10000 -s ttl``
- - The SQL dump files have beend geneated using this PostgreSQL command: ``pg_dump --format=c benchmark_db > outfile.sql``.
+ - The SQL dump files have beend created using this PostgreSQL command ``pg_dump --format=c benchmark_db > outfile.sql``. format=c indicated 'custom' which is also compressing and which is the most flexible way to backup PostgreSQL data.
 
 
 ## RDFLib/PostgreSQL
