@@ -37,7 +37,7 @@ To compare your specific triple store system with PostgreSQL we prepared a setup
   ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
   4. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ  
   5. To import the data into PostgreSQL us the SQL dump files 
-  ``psql -U postgres -h localhost benchmark < dump_scale1000.sql`` (to be verified...)
+  ``pg_restore -U postgres -h localhost -d benchmark scale30000.dump``
   6. Install the project requirements with pip3 
   ``pip3 install -r requirements.txt``
 
