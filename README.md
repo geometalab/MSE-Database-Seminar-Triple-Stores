@@ -44,6 +44,41 @@ To compare your specific triple store system with PostgreSQL we prepared a setup
 Note: With the store_data.py script you are able to import the Triple Store Files (.nt) directly into PostgreSQL using SPARQL insert commands. The recommended way for RDFLib/PostgreSQL is to use the SQL dump files using PostgreSQL tools.
 To import the data, run the store_data.py (this could take a while): ``python3 store_data.py``.
 
+### PostgresSQL Configuration
+To optimise the query and import speed you could set the following settings. (Be aware this settings aren't recommended in a productive system) 
+Edit the postgresql.conf file, by default it is located in the /etc/postgresql/9.6/main folder.  
+OS X 8GB: 
+```
+fsync = off
+max_connections = 5
+shared_buffers = 512MB
+effective_cache_size = 2GB
+work_mem = 87381kB
+maintenance_work_mem = 512MB
+min_wal_size = 100MB
+max_wal_size = 100MB
+checkpoint_completion_target = 0.5
+wal_buffers = 16MB
+default_statistics_target = 100
+```
+
+Windows 16 GB:
+```
+fsync = off
+max_connections = 5
+shared_buffers = 512MB
+effective_cache_size = 4GB
+work_mem = 180588kB
+maintenance_work_mem = 1GB
+min_wal_size = 100MB
+max_wal_size = 100MB
+checkpoint_completion_target = 0.5
+wal_buffers = 16MB
+default_statistics_target = 100
+```
+
+The remaining settings could be let on their default values.
+
 ### Queries
 
 As you can see in the folder 'rdflib/' of our github repo indicated above, there is a queries.py file with the queries from the benchmark with filled random variables.
