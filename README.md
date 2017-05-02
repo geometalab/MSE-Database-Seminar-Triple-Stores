@@ -26,8 +26,46 @@ Notes:
  - If you like to generate your own data for test use the generate script. Switch to the bsbmtools-0.2 directory and generate the sample data. Example: ``./generate -fc -pc 10000 -ud -fn scale10000 -s ttl``
  - The SQL dump files have beend created using this PostgreSQL command ``pg_dump --format=c benchmark_db > outfile.sql``. format=c indicated 'custom' which is also compressing and which is the most flexible way to backup PostgreSQL data.
 
+## RDFLib
+To have a second technology to compare the SPARQL queries with, we us RDFLib which enables to load a triple store file and allows to do queries on the data.
 
-## RDFLib/PostgreSQL
+
+### Setup
+  1. Install Python 3.6 and pip 3
+  2. Clone this repository 
+  ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
+  3. Install the project requirements with pip3 
+  ``pip3 install -r requirements.txt``
+  4. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ (The N-Triple (.nt) files are the relevant ones)  
+  
+### Run the queries
+To run the SPARQL queries with the RDFLib library there is the ``in_memory_queries.py`` script in the folder ``pyrdflib``.
+It it takes the data file as input parameter (-f file_path). As an example usage consider the following:  
+
+``python in_memory_queries.py -f /path/to/file/scale5000.nt``
+
+The computation will run for a while. The main work is to load and parse the data file. 
+The output will look somehow as following:
+```
+Start parsing
+Finished parsing
+Parse time: 125.627s
+Query: query_1 , Count: 10, Time: 1.107s
+Query: query_2 , Count: 16, Time: 0.044s
+Query: query_3 , Count: 10, Time: 0.192s
+Query: query_4 , Count: 10, Time: 0.268s
+Query: query_5 , Count: 5, Time: 0.851s
+Query: query_6 , Count: 2950, Time: 0.759s
+Query: query_7 , Count: 1, Time: 0.104s
+Query: query_8 , Count: 2, Time: 0.031s
+Query: query_10 , Count: 1, Time: 0.134s
+Query: query_11 , Count: 10, Time: 0.006s
+Query: query_12 , Count: 8, Time: 0.017s
+```
+
+
+
+## PostgreSQL (not relevant anymore)
 To compare your specific triple store system with PostgreSQL we prepared a setup with PostgreSQL and RDFLib (and SQLAlchemy).
  
 ### Setup
