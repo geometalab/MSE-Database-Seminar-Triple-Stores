@@ -21,8 +21,9 @@ def do_queries(graph):
         start = time.time()
         query_result = graph.query(query)
         number_of_entries = 0
-        for _ in query_result:
+        for r in query_result:
             number_of_entries += 1
+            print(r)
         end = time.time()
         print("Query: {0} , Count: {1}, Time: {2:.3f}s".format(key, number_of_entries, end - start))
 

@@ -65,22 +65,24 @@ Query: query_12 , Count: 8, Time: 0.017s
 
 
 
-## PostgreSQL (not relevant anymore)
-To compare your specific triple store system with PostgreSQL we prepared a setup with PostgreSQL and RDFLib (and SQLAlchemy).
+## PostgreSQL
+To include PostgreSQL into the benchmarke we use the relational schema of the data provided by the "Berlin SPARQL Benchmark". 
+The generation of this data will look like the following: ``./generate -fc -pc 1000 -ud -fn scale1000 -s sql``
  
 ### Setup
   1. Install PostgreSQL 9.6 and create a database called "benchmark"
-  2. Install Python 3.6 and pip 3
-  3. Clone this repository 
+  2. Clone this repository 
   ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
-  4. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ  
-  5. To import the data into PostgreSQL us the SQL dump files 
-  ``pg_restore -U postgres -h localhost -d benchmark scale30000.dump``
-  6. Install the project requirements with pip3 
-  ``pip3 install -r requirements.txt``
+  3. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ  
+  4. To import the data into PostgreSQL use the SQL ".psql" files 
+  ``psql -U postgres -h localhost -p 5432 benchmark < scale1000.psql``
+  
+### Run the relational queries
+To run the relational queries you have to provide a benchmark database with the stored data.
+All the relational queries are in the relational_queries.psql file in the folder postgres.
+For the execution simply use the following command:
+``psql -U postgres -h localhost -p 5432 < relational_queries.psql``
 
-Note: With the store_data.py script you are able to import the Triple Store Files (.nt) directly into PostgreSQL using SPARQL insert commands. The recommended way for RDFLib/PostgreSQL is to use the SQL dump files using PostgreSQL tools.
-To import the data, run the store_data.py (this could take a while): ``python3 store_data.py``.
 
 ### PostgresSQL Configuration
 To optimise the query and import speed you could set the following settings. (Be aware this settings aren't recommended in a productive system) 
@@ -117,29 +119,7 @@ default_statistics_target = 100
 
 The remaining settings could be let on their default values.
 
-### Queries
 
-As you can see in the folder 'rdflib/' of our github repo indicated above, there is a queries.py file with the queries from the benchmark with filled random variables.
-
-Your goal is now to implement the same queries with your specific framework and compare them with the RDFLib/PostgreSQL setup.      
-
-To run the queries on the RDFLib/PostgreSQL setup use the query_data.py script. 
-``python3 query_data.py`` The output will look somehow as following:
-```
-Query: query_1 , Count: 10, Time: 26.906s
-Query: query_2 , Count: 14, Time: 0.658s
-Query: query_3 , Count: 10, Time: 46.187s
-Query: query_4 , Count: 10, Time: 136.501s
-Query: query_5 , Count: 5, Time: 24.915s
-Query: query_6 , Count: 21467, Time: 98.267s
-Query: query_7 , Count: 5, Time: 32.379s
-Query: query_8 , Count: 3, Time: 0.120s
-(Query: query_9 -) 
-Query: query_10 , Count: 0, Time: 32.155s
-Query: query_11 , Count: 10, Time: 1.077s
-Query: query_12 , Count: 8, Time: 0.044s
-```
-
-Notes:
+## Notes
  - RDFLib doesn't support DESCRIBE, so the query number 9 is not possible in RDFLib.
  - RDFLib with SQLAlchemy implemented aka lazy loading, so the query immediately returns and objects are queries after accessing or interating through the result set.
