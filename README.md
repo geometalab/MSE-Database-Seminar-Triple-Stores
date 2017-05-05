@@ -67,20 +67,21 @@ Query: query_12 , Count: 8, Time: 0.017s
 
 ## PostgreSQL
 To include PostgreSQL into the benchmarke we use the relational schema of the data provided by the "Berlin SPARQL Benchmark". 
-The generation of this data will look like the following: ``./generate -fc -pc 1000 -ud -fn scale1000 -s sql``
+The generation of this data will look like the following: 
+``./generate -fc -pc 1000 -ud -fn scale1000 -s sql``
  
 ### Setup
-  1. Install PostgreSQL 9.6 and create a database called "benchmark"
+  1. Install PostgreSQL 9.6 and create a database called **benchmark**
   2. Clone this repository 
   ``git clone https://github.com/geometalab/MSE-Database-Seminar-Triple-Stores.git``
   3. Get the benchmark data from https://drive.switch.ch/index.php/s/xvHCPcPkVlKjYzJ  
-  4. To import the data into PostgreSQL use the SQL ".psql" files 
+  4. To import the data into PostgreSQL use the SQL **.psql** files 
   ``psql -U postgres -h localhost -p 5432 benchmark < scale1000.psql``
   
 ### Run the relational queries
-To run the relational queries you have to provide a benchmark database with the stored data.
-All the relational queries are in the relational_queries.psql file in the folder postgres.
-For the execution simply use the following command:
+To run the relational queries you have to provide a **benchmark** database with the stored data.
+All the relational queries are in the **relational_queries.psql** file in the folder **postgres**.
+For the execution simply use the following command: 
 ``psql -U postgres -h localhost -p 5432 < relational_queries.psql``
 
 
