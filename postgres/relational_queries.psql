@@ -1,0 +1,225 @@
+\c benchmark
+\timing
+
+/* Query 1 */
+SELECT DISTINCT nr,
+                label
+FROM product p,
+     producttypeproduct ptp
+WHERE p.nr = ptp.product
+  AND ptp."productType" = 2
+  AND "propertyNum1" > 348
+  AND p.nr IN
+    (SELECT DISTINCT product
+     FROM productfeatureproduct
+     WHERE "productFeature"=12)
+  AND p.nr IN
+    (SELECT DISTINCT product
+     FROM productfeatureproduct
+     WHERE "productFeature"=20)
+LIMIT 10;
+
+/* Query 2 */
+SELECT pt.label,
+       pt.comment,
+       pt.producer,
+       "productFeature",
+       "propertyTex1",
+       "propertyTex2",
+       "propertyTex3",
+       "propertyNum1",
+       "propertyNum2",
+       "propertyTex4",
+       "propertyTex5",
+       "propertyNum4"
+FROM product pt,
+     producer pr,
+     productfeatureproduct pfp
+WHERE pt.nr=5
+  AND pt.nr=pfp.product
+  AND pt.producer=pr.nr
+LIMIT 10;
+
+/* Query 3 */
+SELECT p.nr,
+       p.label
+FROM product p,
+     producttypeproduct ptp
+WHERE p.nr=ptp.product
+  AND "productType"=2
+  AND "propertyNum1">214
+  AND "propertyNum3"<698
+  AND 12 IN
+    (SELECT "productFeature"
+     FROM productfeatureproduct
+     WHERE product=p.nr)
+  AND 20 NOT IN
+    (SELECT "productFeature"
+     FROM productfeatureproduct
+     WHERE product=p.nr)
+ORDER BY p.label
+LIMIT 10;
+
+/* Query 4 */
+SELECT DISTINCT p.nr,
+                p.label,
+                p."propertyTex1"
+FROM product p,
+     producttypeproduct ptp
+WHERE p.nr=ptp.product
+  AND ptp."productType"=2
+  AND p.nr IN
+    (SELECT DISTINCT product
+     FROM productfeatureproduct
+     WHERE "productFeature"=12)
+  AND (("propertyNum1">348
+        AND p.nr IN
+          (SELECT DISTINCT product
+           FROM productfeatureproduct
+           WHERE "productFeature"=20))
+       OR ("propertyNum2">759
+           AND p.nr IN
+             (SELECT DISTINCT product
+              FROM productfeatureproduct
+              WHERE "productFeature"=8)))
+ORDER BY label
+LIMIT 10
+OFFSET 5;
+
+/* Query 5 */
+SELECT DISTINCT p.nr,
+                p.label
+FROM product p,
+     product po,
+
+  (SELECT DISTINCT pfp1.product
+   FROM productfeatureproduct pfp1,
+
+     (SELECT "productFeature"
+      FROM productfeatureproduct
+      WHERE product=6) pfp2
+   WHERE pfp2."productFeature"=pfp1."productFeature") pfp
+WHERE p.nr=pfp.product
+  AND po.nr=6
+  AND p.nr!=po.nr
+  AND p."propertyNum1"<(po."propertyNum1"+120)
+  AND p."propertyNum1">(po."propertyNum1"-120)
+  AND p."propertyNum2"<(po."propertyNum2"+170)
+  AND p."propertyNum2">(po."propertyNum2"-170)
+ORDER BY label
+LIMIT 5;
+
+/* Query 6 */
+SELECT nr,
+       label
+FROM product
+WHERE label LIKE '%r%'
+LIMIT 10;
+
+/* Query 7 */
+SELECT *
+FROM
+  (SELECT label
+   FROM product
+   WHERE nr=5) p
+LEFT JOIN (
+             (SELECT o.nr AS onr,
+                     o.price,
+                     v.nr AS vnr,
+                     v.label
+              FROM offer o,
+                   vendor v
+              WHERE 5=o.product
+                AND o.vendor=v.nr
+                AND v.country='DE'
+                AND o."validTo">'2001-09-16') ov
+           RIGHT JOIN
+             (SELECT r.nr AS rnr,
+                     r.title,
+                     pn.nr AS pnnr,
+                     pn.name,
+                     r.rating1,
+                     r.rating2
+              FROM review r,
+                   person pn
+              WHERE r.product=5
+                AND r.person=pn.nr) rpn ON (1=1)) ON (1=1)
+LIMIT 10;
+
+/* Query 8 */
+SELECT r.title,
+       r.text,
+       r."reviewDate",
+       p.nr,
+       p.name,
+       r.rating1,
+       r.rating2,
+       r.rating3,
+       r.rating4
+FROM review r,
+     person p
+WHERE r.product=6
+  AND r.person=p.nr
+  AND r.language='en'
+ORDER BY r."reviewDate" DESC
+LIMIT 20;
+
+/* Query 9 */
+SELECT p.nr,
+       p.name,
+       p.mbox_sha1sum,
+       p.country,
+       r2.nr,
+       r2.product,
+       r2.title
+FROM review r,
+     person p,
+     review r2
+WHERE r.nr=4
+  AND r.person=p.nr
+  AND r2.person=p.nr
+LIMIT 10;
+
+/* Query 10 */
+SELECT DISTINCT o.nr,
+                o.price
+FROM offer o,
+     vendor v
+WHERE o.product=1
+  AND o."deliveryDays"<=3
+  AND v.country='US'
+  AND o."validTo">'2008-04-19'
+  AND o.vendor=v.nr
+ORDER BY o.price
+LIMIT 10;
+
+/* Query 11 */
+SELECT product,
+       producer,
+       vendor,
+       price,
+       "validFrom",
+       "validTo",
+       "deliveryDays",
+       "offerWebpage",
+       publisher,
+       "publishDate"
+FROM offer
+WHERE nr=1
+LIMIT 10;
+
+/* Query 12 */
+SELECT p.nr AS "productNr",
+       p.label AS productlabel,
+       v.label AS vendorname,
+       v.homepage AS vendorhomepage,
+       o."offerWebpage" AS "offerURL",
+       o.price AS price,
+       o."deliveryDays" AS "deliveryDays",
+       o."validTo" AS "validTo"
+FROM offer o,
+     product p,
+     vendor v
+WHERE o.nr=1
+  AND o.product=p.nr
+  AND o.vendor=v.nr;
