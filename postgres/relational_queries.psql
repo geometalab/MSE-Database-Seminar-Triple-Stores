@@ -1,7 +1,9 @@
-\c benchmark
+\c test
 \timing
 
-/* Query 1 */
+\echo
+\echo 'Query 1'
+\echo
 SELECT DISTINCT nr,
                 label
 FROM product p,
@@ -19,7 +21,9 @@ WHERE p.nr = ptp.product
      WHERE "productFeature"=20)
 LIMIT 10;
 
-/* Query 2 */
+\echo
+\echo 'Query 2'
+\echo
 SELECT pt.label,
        pt.comment,
        pt.producer,
@@ -40,7 +44,10 @@ WHERE pt.nr=5
   AND pt.producer=pr.nr
 LIMIT 10;
 
-/* Query 3 */
+
+\echo
+\echo 'Query 3'
+\echo
 SELECT p.nr,
        p.label
 FROM product p,
@@ -60,7 +67,10 @@ WHERE p.nr=ptp.product
 ORDER BY p.label
 LIMIT 10;
 
-/* Query 4 */
+
+\echo
+\echo 'Query 4'
+\echo
 SELECT DISTINCT p.nr,
                 p.label,
                 p."propertyTex1"
@@ -86,7 +96,10 @@ ORDER BY label
 LIMIT 10
 OFFSET 5;
 
-/* Query 5 */
+
+\echo
+\echo 'Query 5'
+\echo
 SELECT DISTINCT p.nr,
                 p.label
 FROM product p,
@@ -109,14 +122,20 @@ WHERE p.nr=pfp.product
 ORDER BY label
 LIMIT 5;
 
-/* Query 6 */
+
+\echo
+\echo 'Query 6'
+\echo
 SELECT nr,
        label
 FROM product
 WHERE label LIKE '%r%'
 LIMIT 10;
 
-/* Query 7 */
+
+\echo
+\echo 'Query 7'
+\echo
 SELECT *
 FROM
   (SELECT label
@@ -146,7 +165,10 @@ LEFT JOIN (
                 AND r.person=pn.nr) rpn ON (1=1)) ON (1=1)
 LIMIT 10;
 
-/* Query 8 */
+
+\echo
+\echo 'Query 8'
+\echo
 SELECT r.title,
        r.text,
        r."reviewDate",
@@ -164,7 +186,10 @@ WHERE r.product=6
 ORDER BY r."reviewDate" DESC
 LIMIT 20;
 
-/* Query 9 */
+
+\echo
+\echo 'Query 9'
+\echo
 SELECT p.nr,
        p.name,
        p.mbox_sha1sum,
@@ -180,7 +205,10 @@ WHERE r.nr=4
   AND r2.person=p.nr
 LIMIT 10;
 
-/* Query 10 */
+
+\echo
+\echo 'Query 10'
+\echo
 SELECT DISTINCT o.nr,
                 o.price
 FROM offer o,
@@ -193,7 +221,10 @@ WHERE o.product=1
 ORDER BY o.price
 LIMIT 10;
 
-/* Query 11 */
+
+\echo
+\echo 'Query 11'
+\echo
 SELECT product,
        producer,
        vendor,
@@ -208,7 +239,10 @@ FROM offer
 WHERE nr=1
 LIMIT 10;
 
-/* Query 12 */
+
+\echo
+\echo 'Query 12'
+\echo
 SELECT p.nr AS "productNr",
        p.label AS productlabel,
        v.label AS vendorname,
