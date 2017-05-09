@@ -94,7 +94,7 @@ WHERE p.nr=ptp.product
               WHERE "productFeature"=8)))
 ORDER BY label
 LIMIT 10
-OFFSET 5;
+OFFSET 10;
 
 
 \echo

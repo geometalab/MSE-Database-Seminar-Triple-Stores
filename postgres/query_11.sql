@@ -1,0 +1,1 @@
+SELECT product, producer, vendor, price, "validFrom", "validTo", "deliveryDays", "offerWebpage", publisher, "publishDate" FROM offer WHERE nr=1;

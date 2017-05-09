@@ -1,0 +1,1 @@
+SELECT p.nr, p.label FROM product p, producttypeproduct ptp WHERE p.nr=ptp.product AND "productType"=2 AND "propertyNum1">214 AND "propertyNum3"<698 AND 12 IN (SELECT "productFeature" FROM productfeatureproduct WHERE product=p.nr) AND 20 NOT IN (SELECT "productFeature" FROM productfeatureproduct WHERE product=p.nr) ORDER BY p.label LIMIT 10;

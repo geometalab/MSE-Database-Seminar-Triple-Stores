@@ -1,0 +1,1 @@
+SELECT pt.label, pt.comment, pt.producer, "productFeature", "propertyTex1", "propertyTex2", "propertyTex3", "propertyNum1", "propertyNum2", "propertyTex4", "propertyTex5", "propertyNum4" FROM product pt, producer pr, productfeatureproduct pfp WHERE pt.nr=5 AND pt.nr=pfp.product AND pt.producer=pr.nr;
