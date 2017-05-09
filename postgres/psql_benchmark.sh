@@ -19,7 +19,7 @@ run_pg_bench(){
     local file=$1
     echo "Query: ${file}"
     echo -e "------------------------"
-    export PGPASSWORD=${PASSWORD}; pgbench -U $USERNAME -h localhost -f $file -n -r $DATABASENAME
+    export PGPASSWORD=${PASSWORD}; pgbench -U $USERNAME -h localhost -f $file -n $DATABASENAME
     echo -e "\n"
 }
 
