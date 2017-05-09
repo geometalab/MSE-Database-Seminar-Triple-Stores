@@ -1,0 +1,1 @@
+SELECT p.nr AS "productNr", p.label AS productlabel, v.label AS vendorname, v.homepage AS vendorhomepage, o."offerWebpage" AS "offerURL", o.price AS price, o."deliveryDays" AS "deliveryDays", o."validTo" AS "validTo" FROM offer o, product p, vendor v WHERE o.nr=1 AND o.product=p.nr AND o.vendor=v.nr;

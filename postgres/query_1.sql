@@ -1,0 +1,1 @@
+SELECT DISTINCT nr, label FROM product p, producttypeproduct ptp WHERE p.nr = ptp.product AND ptp."productType" = 2 AND "propertyNum1" > 348 AND p.nr IN (SELECT DISTINCT product FROM productfeatureproduct WHERE "productFeature"=12) AND p.nr IN (SELECT DISTINCT product FROM productfeatureproduct WHERE "productFeature"=20) LIMIT 10;
