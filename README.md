@@ -84,6 +84,34 @@ All the relational queries are in the **relational_queries.psql** file in the fo
 For the execution simply use the following command: 
 ``psql -U postgres -h localhost -p 5432 < relational_queries.psql``
 
+### pgbench
+Postgres provides a tool for benchmarks called **pgbench**, it helps to analyse the postgres performance.
+Our relational SQL queries could also be executed with pgbench.
+To simplify this porccess we provide the bash script **psql_benchmark.sh**  in the **postgres**  folder.
+
+Example usage:
+```
+./psql_benchmark.sh USERNAME PASSWORD DATABASE
+```
+
+Example output:
+```
+Query: query_1.sql
+------------------------
+transaction type: Custom query
+scaling factor: 1
+query mode: simple
+number of clients: 1
+number of threads: 1
+number of transactions per client: 10
+number of transactions actually processed: 10/10
+latency average: 38.978 ms
+tps = 25.655432 (including connections establishing)
+tps = 25.908951 (excluding connections establishing)
+```
+
+With the **tps** (transactions per second) value you are able to calculate the time for the queries.
+In our example the tps of query_1 is 25.655432, thus the average time is 0.0389 sec.
 
 ### PostgresSQL Configuration
 To optimise the query and import speed you could set the following settings. (Be aware this settings aren't recommended in a productive system) 
